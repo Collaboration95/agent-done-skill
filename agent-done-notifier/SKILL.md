@@ -18,6 +18,7 @@ Send push notifications to notify the user when tasks are completed using ntfy.s
 ## Configuration
 
 Set these environment variables (default values shown):
+
 - `NTFY_TOPIC`: `agent-done-k9x3mq` (your unique topic)
 - `NTFY_TITLE`: `Agent Update`
 - `NTFY_PRIORITY`: `high`
@@ -41,8 +42,8 @@ curl -d "YOUR_MESSAGE_HERE" \
 import urllib.request
 import urllib.error
 import os
-
-topic = os.environ.get("NTFY_TOPIC", "agent-done-k9x3mq")
+# ALWAYS GENERATE A UNIQUE SUFFIX FOR THE NTFY TOPIC
+topic = os.environ.get("NTFY_TOPIC", "agent-done-enter-unique-name")
 message = "YOUR_MESSAGE_HERE"
 url = f"https://ntfy.sh/{topic}"
 
