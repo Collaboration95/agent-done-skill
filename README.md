@@ -25,8 +25,7 @@ bash scripts/message.sh "hello from terminal"
 
 ```
 agent-done-notifier/
-├── skill/                  # Cursor/OpenCode agent skill definition
-│   └── SKILL.md           # Agent skill instructions
+├── SKILL.md               # Agent skill instructions (Cursor/OpenCode)
 ├── scripts/               # Notification scripts
 │   ├── setup.sh           # Initial setup script
 │   ├── message.sh         # Bash notification script
@@ -82,20 +81,20 @@ To change the default topic, either edit the `.env` file or set the env var.
 
 ## Install as a Cursor Skill
 
-Copy the skill directory into your Cursor skills folder:
+Copy the entire repository into your Cursor skills folder:
 
 ```bash
-cp -r skill/ ~/.cursor/skills/agent-done-notifier/
+cp -r agent-done-notifier ~/.cursor/skills/agent-done-notifier
 ```
 
 The agent will automatically send notifications at the end of tasks.
 
 ## Install as an OpenCode Skill
 
-Copy the skill directory into your OpenCode skills folder:
+Copy the entire repository into your OpenCode skills folder:
 
 ```bash
-cp -r skill/ ~/.config/opencode/skills/agent-done-notifier/
+cp -r agent-done-notifier ~/.config/opencode/skills/agent-done-notifier
 ```
 
 The agent will automatically send notifications at the end of tasks.
