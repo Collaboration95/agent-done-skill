@@ -11,64 +11,58 @@ Uses [ntfy.sh](https://ntfy.sh) — a free, open-source pub/sub notification ser
 git clone https://github.com/YOUR_USER/agent-done-notifier.git
 cd agent-done-notifier
 
-# 2. Run setup
-bash scripts/setup.sh
+# 2. Copy skill to your skills directory
+# For Cursor:
+cp -r agent-done-notifier ~/.cursor/skills/agent-done-notifier
+# For OpenCode:
+cp -r agent-done-notifier ~/.config/opencode/skills/agent-done-notifier
 
 # 3. Subscribe on your phone
-#    Install the ntfy app (iOS / Android), subscribe to the topic shown by setup
+#    Install the ntfy app (iOS / Android), subscribe to topic: agent-done-k9x3mq
 
-# 4. Send a test notification
-bash scripts/message.sh "hello from terminal"
+# 4. Test notification
+bash ~/.cursor/skills/agent-done-notifier/scripts/message.sh "hello from terminal"
 ```
 
 ## Project Structure
 
 ```
-agent-done-notifier/
-├── SKILL.md               # Agent skill instructions (Cursor/OpenCode)
-├── scripts/               # Notification scripts
-│   ├── setup.sh           # Initial setup script
-│   ├── message.sh         # Bash notification script
-│   └── message.py         # Python notification script
-├── references/            # Documentation
-│   └── ntfy-guide.md      # Complete implementation guide
-├── README.md              # This file
-├── .env.example           # Environment variables template
-└── .gitignore             # Git ignore rules
+agent-done-notifier/                    # Repository root
+├── agent-done-notifier/               # Skill folder (copy this to skills/)
+│   ├── SKILL.md                      # Agent skill instructions
+│   ├── scripts/                      # Notification scripts
+│   │   ├── message.sh                # Bash notification script
+│   │   └── message.py                # Python notification script
+│   └── references/                   # Documentation
+│       └── ntfy-guide.md             # Complete implementation guide
+├── README.md                          # This file
+├── .env.example                       # Environment variables template
+└── .gitignore                         # Git ignore rules
 ```
 
 ## Scripts
 
-### `setup.sh`
-
-Initial setup script that:
-- Creates a random agent-done-tag
-- Generates `.env` file with configuration
-- Displays the ntfy topic to subscribe to
-
-Run this once after cloning the repository.
-
 ### `message.sh` (Bash)
 
 ```bash
-bash scripts/message.sh "Agent finished refactoring auth module"
+bash agent-done-notifier/scripts/message.sh "Agent finished refactoring auth module"
 ```
 
 ### `message.py` (Python, stdlib only)
 
 ```bash
-python3 scripts/message.py "PR #42 opened — ready for review"
-python3 scripts/message.py "Custom title" --title "Build Done" --priority urgent
+python3 agent-done-notifier/scripts/message.py "PR #42 opened — ready for review"
+python3 agent-done-notifier/scripts/message.py "Custom title" --title "Build Done" --priority urgent
 ```
 
 Both scripts:
-- Read configuration from `.env` file
+- Read configuration from environment variables
 - Fail silently on network errors (never block your agent)
 - Print a confirmation line to stdout
 
 ## Configuration
 
-Configuration is managed via the `.env` file (created by setup.sh):
+Configuration is managed via environment variables:
 
 | Environment Variable | Default | Purpose |
 |---------------------|---------|---------|
@@ -77,11 +71,11 @@ Configuration is managed via the `.env` file (created by setup.sh):
 | `NTFY_PRIORITY` | `high` | `min` / `low` / `default` / `high` / `urgent` |
 | `NTFY_TAGS` | `white_check_mark,robot` | ntfy tags (emoji shortcodes) |
 
-To change the default topic, either edit the `.env` file or set the env var.
+To change the default topic, set the `NTFY_TOPIC` environment variable in your shell config.
 
 ## Install as a Cursor Skill
 
-Copy the entire repository into your Cursor skills folder:
+Copy the skill folder into your Cursor skills folder:
 
 ```bash
 cp -r agent-done-notifier ~/.cursor/skills/agent-done-notifier
@@ -91,7 +85,7 @@ The agent will automatically send notifications at the end of tasks.
 
 ## Install as an OpenCode Skill
 
-Copy the entire repository into your OpenCode skills folder:
+Copy the skill folder into your OpenCode skills folder:
 
 ```bash
 cp -r agent-done-notifier ~/.config/opencode/skills/agent-done-notifier
