@@ -5,7 +5,7 @@ description: Send push notifications when an agent completes a task. Use when fi
 
 # Agent Done Notifier
 
-Send push notifications to notify the user when tasks are completed. Read the documentation in `references/` directory for implementation details.
+Send push notifications to notify the user when tasks are completed using ntfy.sh.
 
 ## When to Use
 
@@ -15,13 +15,56 @@ Send push notifications to notify the user when tasks are completed. Read the do
 - Error encountered that needs human attention
 - Any milestone where the user should be notified
 
+## Configuration
+
+Set these environment variables (default values shown):
+- `NTFY_TOPIC`: `agent-done-k9x3mq` (your unique topic)
+- `NTFY_TITLE`: `Agent Update`
+- `NTFY_PRIORITY`: `high`
+
 ## Instructions
 
-1. Read `references/ntfy-guide.md` for complete setup and usage instructions
-2. Run the setup script first: `bash scripts/setup.sh`
-3. After completing a task, execute the notification script
-4. Provide a concise summary message describing what was accomplished
-5. Consider the current repository context when composing notification messages
+After completing a task, send a notification using one of these methods. The notification should be the **final action** after all work is complete.
+
+### Method 1: Using curl (Recommended)
+
+```bash
+curl -d "YOUR_MESSAGE_HERE" \
+  -H "Title: Agent Update" \
+  -H "Priority: high" \
+  https://ntfy.sh/${NTFY_TOPIC:-agent-done-k9x3mq}
+```
+
+### Method 2: Using Python (Stdlib only)
+
+```python
+import urllib.request
+import urllib.error
+import os
+
+topic = os.environ.get("NTFY_TOPIC", "agent-done-k9x3mq")
+message = "YOUR_MESSAGE_HERE"
+url = f"https://ntfy.sh/{topic}"
+
+req = urllib.request.Request(url, data=message.encode("utf-8"), method="POST")
+req.add_header("Title", "Agent Update")
+req.add_header("Priority", "high")
+
+try:
+    with urllib.request.urlopen(req, timeout=10):
+        pass
+except (urllib.error.URLError, OSError):
+    pass  # Fail silently
+```
+
+### Method 3: Using Bash scripts (if executable)
+
+```bash
+bash agent-done-notifier/scripts/message.sh "YOUR_MESSAGE_HERE"
+python3 agent-done-notifier/scripts/message.py "YOUR_MESSAGE_HERE"
+```
+
+**Note:** Scripts may not be executable depending on permissions. Prefer Method 1 or 2.
 
 ## Notification Guidelines
 
@@ -36,6 +79,7 @@ Write concise, informative messages summarizing completed work:
 
 ## Important Notes
 
-- Notification scripts fail silently on network errors
+- All notification methods fail silently on network errors
 - Always send as the final action after all work is complete
 - Do not skip unless explicitly requested by the user
+- For more details, see `references/ntfy-guide.md`
