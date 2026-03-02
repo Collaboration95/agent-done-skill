@@ -8,8 +8,8 @@ Uses [ntfy.sh](https://ntfy.sh) — a free, open-source pub/sub notification ser
 
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR_USER/agent-done-notifier.git
-cd agent-done-notifier
+git clone https://github.com/Collaboration95/agent-done-skill.git
+cd agent-done-skill
 
 # 2. Install for your agent
 # For Claude Code: [Setup Guide](https://docs.anthropic.com/claude/docs/coding-environment)
