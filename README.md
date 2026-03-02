@@ -74,8 +74,7 @@ agent-done-notifier/                    # Repository root
 ```bash
 bash ~/.claude/skills/agent-done-notifier/scripts/message.sh "Agent finished refactoring auth module"
 ```
-
-Both scripts:
+Behaviour: 
 - Read configuration from environment variables
 - Fail silently on network errors (never block your agent)
 - Print a confirmation line to stdout
