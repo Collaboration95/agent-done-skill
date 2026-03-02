@@ -4,6 +4,28 @@ Push notifications to your phone when AI agents finish tasks. Zero infrastructur
 
 Uses [ntfy.sh](https://ntfy.sh) — a free, open-source pub/sub notification service.
 
+## Agent Compatibility
+
+### OpenCode
+- **Docs**: https://opencode.ai/docs/skills/
+- **Location**: `.opencode/skills/<name>/SKILL.md` or `~/.config/opencode/skills/<name>/SKILL.md`
+- **Structure**: SKILL.md with YAML frontmatter (name, description, license, compatibility, metadata)
+- **Compatible with**: `.claude/skills/` and `.agents/skills/` formats
+
+### Claude Code
+- **Docs**: https://code.claude.com/docs/en/skills.md
+- **Location**: `.claude/skills/<skill-name>/SKILL.md` (project), `~/.claude/skills/<skill-name>/SKILL.md` (personal)
+- **Structure**: SKILL.md with YAML frontmatter (name, description, disable-model-invocation, user-invocable, allowed-tools, model, context, agent, hooks, argument-hint)
+- **Supports**: Additional files (templates, examples, scripts)
+
+### Cursor
+- **Status**: Could not access documentation (certificate expired)
+- **Note**: Compatible with `.claude/skills/` format based on OpenCode docs
+
+### Gemini CLI
+- **Status**: Could not access documentation
+- **Note**: Unknown compatibility
+
 ## Quick Start
 
 ```bash
@@ -45,7 +67,6 @@ agent-done-notifier/                    # Repository root
 │   └── agent-done-notifier/          # (same structure as .claude/skills/)
 ├── agent-done-notifier/              # Source directory (reference)
 ├── README.md                        # This file
-├── AGENTS_DOCS.md                  # Agent compatibility documentation
 ├── .env.example                     # Environment variables template
 └── .gitignore                       # Git ignore rules
 ```
@@ -111,8 +132,6 @@ The agent will automatically send notifications at the end of tasks.
 ### Other Agents
 
 This skill follows the Agent Skills open standard (https://agentskills.io) and may work with other agents that support `.claude/skills/` or `.agents/skills/` formats.
-
-See `AGENTS_DOCS.md` for compatibility details.
 
 ## How It Works
 
