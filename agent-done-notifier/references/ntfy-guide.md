@@ -6,9 +6,9 @@ The notification system provides a zero-infrastructure solution for sending push
 
 ### Components
 
-Two notification scripts are provided in the `scripts/` directory:
+A notification script is provided in the `scripts/` directory:
 
-#### 1. message.sh (Bash)
+#### message.sh (Bash)
 
 - Native bash implementation
 - Minimal dependencies
@@ -17,7 +17,7 @@ Two notification scripts are provided in the `scripts/` directory:
 
 ### Configuration
 
-Both scripts support configuration via environment variables:
+The script supports configuration via environment variables:
 
 | Environment Variable | Default                  | Purpose                                     |
 | -------------------- | ------------------------ | ------------------------------------------- |
@@ -50,9 +50,9 @@ The notification system is designed to work seamlessly with AI agents:
 
 ```
 User Task Completion
-       ↓
-   Agent executes scripts/message.sh or scripts/message.py
-       ↓
+        ↓
+    Agent executes scripts/message.sh
+        ↓
    POST to https://ntfy.sh/<topic>
        ↓
    ntfy.sh delivers to all subscribers

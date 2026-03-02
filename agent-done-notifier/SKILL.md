@@ -58,14 +58,13 @@ except (urllib.error.URLError, OSError):
     pass  # Fail silently
 ```
 
-### Method 3: Using Bash scripts (if executable)
+### Method 3: Using Bash script (if executable)
 
 ```bash
 bash agent-done-notifier/scripts/message.sh "YOUR_MESSAGE_HERE"
-python3 agent-done-notifier/scripts/message.py "YOUR_MESSAGE_HERE"
 ```
 
-**Note:** Scripts may not be executable depending on permissions. Prefer Method 1 or 2.
+**Note:** Script may not be executable depending on permissions. Prefer Method 1 or 2.
 
 ## Notification Guidelines
 
