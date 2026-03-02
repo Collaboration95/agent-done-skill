@@ -21,7 +21,7 @@ The script supports configuration via environment variables:
 
 | Environment Variable | Default                  | Purpose                                     |
 | -------------------- | ------------------------ | ------------------------------------------- |
-| `NTFY_TOPIC`         | `agent-done-k9x3mq`      | ntfy.sh topic identifier                    |
+| `NTFY_TOPIC`         | `agent-done-unique`      | ntfy.sh topic identifier                    |
 | `NTFY_TITLE`         | `Agent Update`           | Notification title                          |
 | `NTFY_PRIORITY`      | `high`                   | Priority level: min/low/default/high/urgent |
 | `NTFY_TAGS`          | `white_check_mark,robot` | Notification tags (emoji shortcodes)        |

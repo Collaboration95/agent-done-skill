@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-NTFY_TOPIC="${NTFY_TOPIC:-agent-done-k9x3mq}"
+NTFY_TOPIC="${NTFY_TOPIC:-agent-done-unique}"
 NTFY_URL="https://ntfy.sh/${NTFY_TOPIC}"
 
 TITLE="${NTFY_TITLE:-Agent Update}"
