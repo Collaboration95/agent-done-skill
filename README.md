@@ -33,8 +33,7 @@ agent-done-notifier/                    # Repository root
 │   └── agent-done-notifier/
 │       ├── SKILL.md                  # Agent skill instructions
 │       ├── scripts/                  # Notification scripts
-│       │   ├── message.sh            # Bash notification script
-│       │   └── message.py            # Python notification script
+│       │   └── message.sh            # Bash notification script
 │       └── references/               # Documentation
 │           └── ntfy-guide.md         # Complete implementation guide
 ├── .agents/skills/                   # Compatible with OpenCode
@@ -52,13 +51,6 @@ agent-done-notifier/                    # Repository root
 
 ```bash
 bash ~/.claude/skills/agent-done-notifier/scripts/message.sh "Agent finished refactoring auth module"
-```
-
-### `message.py` (Python, stdlib only)
-
-```bash
-python3 ~/.claude/skills/agent-done-notifier/scripts/message.py "PR #42 opened — ready for review"
-python3 ~/.claude/skills/agent-done-notifier/scripts/message.py "Custom title" --title "Build Done" --priority urgent
 ```
 
 Both scripts:
