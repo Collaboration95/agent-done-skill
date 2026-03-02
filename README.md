@@ -19,12 +19,8 @@ Uses [ntfy.sh](https://ntfy.sh) — a free, open-source pub/sub notification ser
 - **Supports**: Additional files (templates, examples, scripts)
 
 ### Cursor
-- **Status**: Could not access documentation (certificate expired)
+- **Status**: https://cursor.com/docs/context/skills
 - **Note**: Compatible with `.claude/skills/` format based on OpenCode docs
-
-### Gemini CLI
-- **Status**: Could not access documentation
-- **Note**: Unknown compatibility
 
 ## Quick Start
 
