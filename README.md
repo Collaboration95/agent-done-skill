@@ -12,11 +12,14 @@ git clone https://github.com/YOUR_USER/agent-done-notifier.git
 cd agent-done-notifier
 
 # 2. Install for your agent
-# For Claude Code:
+# For Claude Code: [Setup Guide](https://docs.anthropic.com/claude/docs/coding-environment)
 cp -r .claude/skills/agent-done-notifier ~/.claude/skills/agent-done-notifier
 
-# For OpenCode:
+# For OpenCode: [Setup Guide](https://opencode.ai/docs)
 cp -r .claude/skills/agent-done-notifier ~/.config/opencode/skills/agent-done-notifier
+
+# For Cursor: [Setup Guide](https://docs.cursor.sh/)
+cp -r .cursor/skills/agent-done-notifier ~/.cursor/skills/agent-done-notifier
 
 # 3. Subscribe on your phone
 #    Install the ntfy app (iOS / Android), subscribe to topic: agent-done-k9x3mq
@@ -37,6 +40,8 @@ agent-done-notifier/                    # Repository root
 │       └── references/               # Documentation
 │           └── ntfy-guide.md         # Complete implementation guide
 ├── .agents/skills/                   # Compatible with OpenCode
+│   └── agent-done-notifier/          # (same structure as .claude/skills/)
+├── .cursor/skills/                   # Compatible with Cursor
 │   └── agent-done-notifier/          # (same structure as .claude/skills/)
 ├── agent-done-notifier/              # Source directory (reference)
 ├── README.md                        # This file
@@ -89,6 +94,16 @@ Copy the skill folder into your OpenCode skills folder:
 
 ```bash
 cp -r .claude/skills/agent-done-notifier ~/.config/opencode/skills/agent-done-notifier
+```
+
+The agent will automatically send notifications at the end of tasks.
+
+### Cursor
+
+Copy the skill folder into your Cursor skills folder:
+
+```bash
+cp -r .cursor/skills/agent-done-notifier ~/.cursor/skills/agent-done-notifier
 ```
 
 The agent will automatically send notifications at the end of tasks.
