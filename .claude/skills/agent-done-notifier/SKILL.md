@@ -43,7 +43,7 @@ import urllib.request
 import urllib.error
 import os
 # ALWAYS GENERATE A UNIQUE SUFFIX FOR THE NTFY TOPIC
-topic = os.environ.get("NTFY_TOPIC", "agent-done-enter-unique-name")
+topic = os.environ.get("NTFY_TOPIC", "agent-done-unique")
 message = "YOUR_MESSAGE_HERE"
 url = f"https://ntfy.sh/{topic}"
 
